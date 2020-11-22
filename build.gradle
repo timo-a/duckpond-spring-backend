@@ -3,17 +3,13 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 	id 'io.freefair.lombok' version '5.3.0'
-	//id 'org.springdoc.openapi-gradle-plugin' version '1.3.0'
+	id "com.github.johnrengelman.processes" version "0.5.0"  //needed for springdoc
+	id 'org.springdoc.openapi-gradle-plugin' version '1.3.0' //
 }
 
 group = 'com.circleescape'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-
-bootRun {
-  environment = ["FRONTEND": "http://localhost:8080"
-                ,"BASEPATH": "http://localhost:8080"]
-}
 
 repositories {
 	mavenCentral()
@@ -37,3 +33,11 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+/*openApi {
+    apiDocsUrl.set("https://localhost:8080/v3/api-docs")
+    outputDir.set(file("$buildDir/docs"))
+    outputFileName.set("myopenapi.json")
+    waitTimeInSeconds.set(10)
+    forkProperties.set("-Dspring.profiles.active=special")
+}*/

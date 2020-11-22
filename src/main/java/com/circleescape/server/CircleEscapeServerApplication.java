@@ -29,8 +29,8 @@ import lombok.extern.log4j.Log4j2;
 @SpringBootApplication
 public class CircleEscapeServerApplication {
 	
-	private static final String BASEPATH = System.getenv("BASEPATH");
-	private static final String FRONTEND = System.getenv("FRONTEND");
+	//private static final String BASEPATH = System.getenv("BASEPATH");
+	//private static final String FRONTEND = System.getenv("FRONTEND");
 
 	@Bean
 	public OpenAPI pondOpenApi(@Value("${springdoc.version}") String appVersion) {
@@ -49,7 +49,7 @@ public class CircleEscapeServerApplication {
 	}
 
 	public static void main(String[] args) {
-		String basepath = BASEPATH;
+		String basepath = "http://localhost:8080";
 		log.info(String.format("api as json at %s/swagger-ui.html", basepath));
 		log.info(String.format("api as json at %s/v3/api-docs", basepath));
 		log.info(String.format("api as yaml at %s/v3/api-docs.yaml", basepath));
@@ -60,7 +60,8 @@ public class CircleEscapeServerApplication {
 	public void doSomethingAfterStartup() {
 	    System.out.println("hello world, I have just started up");
 	}
-	@Bean
+
+/*	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 	   return new WebMvcConfigurer() {
 	      @Override
@@ -71,7 +72,7 @@ public class CircleEscapeServerApplication {
 	                 ;
 	      }
 	   };
-	}
+	}*/
 	
 	
 	
