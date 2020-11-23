@@ -34,10 +34,10 @@ test {
 	useJUnitPlatform()
 }
 
-/*openApi {
+openApi {
     apiDocsUrl.set("https://localhost:8080/v3/api-docs")
     outputDir.set(file("$buildDir/docs"))
     outputFileName.set("myopenapi.json")
     waitTimeInSeconds.set(10)
     forkProperties.set("-Dspring.profiles.active=special")
-}*/
+}
