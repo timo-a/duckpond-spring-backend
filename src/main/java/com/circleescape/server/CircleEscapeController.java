@@ -111,7 +111,15 @@ public class CircleEscapeController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	
-	
+
+	@RequestMapping("/")
+	public String showRules() {
+		return "Hi there";
+	}
+
+	@RequestMapping("/rules")
+	public String showRules2() {
+		return "Hi there";
+	}
+
 }

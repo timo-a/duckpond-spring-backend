@@ -35,9 +35,9 @@ test {
 }
 
 openApi {
-    apiDocsUrl.set("https://localhost:8080/v3/api-docs")
+    apiDocsUrl.set("http://localhost:8080/v3/api-docs.yaml")
     outputDir.set(file("$buildDir/docs"))
-    outputFileName.set("myopenapi.json")
+    outputFileName.set("myopenapi.yaml")
     waitTimeInSeconds.set(10)
     forkProperties.set("-Dspring.profiles.active=special")
 }

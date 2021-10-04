@@ -1,0 +1,36 @@
+= Circle Escape Server
+
+== Commands
+
+|===
+|command |effect
+
+| ./gradlew bootRun
+| run
+
+| ./gradlew generateOpenApiDocs
+| generate yaml api doc in `build/docs`
+|===
+
+== Endpoints
+
+|===
+|Purpose |url
+
+|API as website
+|http://localhost:8080/swagger-ui.html[]
+
+|API as yaml
+|http://localhost:8080/v3/api-docs.yaml
+
+|API as json
+|http://localhost:8080/v3/api-docs
+
+|Instructions
+|http://localhost:8080/instructions.html
+
+|===
+
+
+
+
