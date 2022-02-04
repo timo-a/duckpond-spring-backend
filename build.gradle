@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.5.RELEASE'
+	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 	id 'io.freefair.lombok' version '5.3.0'
@@ -21,13 +21,13 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	implementation 'org.springdoc:springdoc-openapi-ui:1.4.8'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.5'
 	implementation 'org.apache.commons:commons-math3:3.6.1'
 	//implementation 'org.apache.commons:lang3.tuple'
-	compile group: 'javax.validation', name: 'validation-api'
-	annotationProcessor 'io.swagger:swagger-annotations:1.5.22'
-	compile "io.swagger:swagger-annotations:1.5.22"
-	
+	implementation group: 'javax.validation', name: 'validation-api'
+	annotationProcessor 'io.swagger:swagger-annotations:1.6.4'
+	implementation 'io.swagger:swagger-annotations:1.6.4'
+
 }
 
 test {
