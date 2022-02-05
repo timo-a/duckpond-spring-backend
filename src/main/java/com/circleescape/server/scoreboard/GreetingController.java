@@ -1,5 +1,7 @@
 package com.circleescape.server.scoreboard;
 
+import com.circleescape.server.scoreboard.data.ScoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,9 @@ import java.util.Set;
 
 @Controller
 public class GreetingController {
+
+    @Autowired
+    ScoreRepository scoreRepository;
 
     @GetMapping("/greeting")
     public String greeting(
@@ -20,7 +25,7 @@ public class GreetingController {
                 new Score("alice", 0.6f),
                 new Score("bob", 0.9f));
 
-        model.addAttribute("scoreTests", scores);
+        model.addAttribute("scoreTests", scoreRepository.findAll());
 
         return "greeting";
     }

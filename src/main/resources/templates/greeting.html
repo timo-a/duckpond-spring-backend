@@ -11,12 +11,14 @@
         <tr>
             <th>Name</th>
             <th>Distance</th>
+            <th>Timestamp</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="score : ${scoreTests}">
             <td th:text="${score.name}">Name</td>
             <td th:text="${score.distance}">Final distance to cat</td>
+            <td th:text="${score.time}">DateTime of winning</td>
         </tr>
         </tbody>
     </table>
