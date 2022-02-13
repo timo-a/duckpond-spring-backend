@@ -1,10 +1,7 @@
 package com.circleescape.server.scoreboard.data;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -12,15 +9,27 @@ import java.util.Date;
 @Table(name = "SCORES")
 public class Score {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
+    }
+
+    @Column(name = "game")
+    private Long gameId;
+
+    public void setGameId(Long id) {
+        this.gameId = id;
+    }
+
+    public Long getGameId() {
+        return gameId;
     }
 
     @Column(nullable = false)
@@ -29,6 +38,15 @@ public class Score {
     private double distance;
     @Column
     private LocalDateTime time;
+
+    public Score() {}
+
+    public Score(Long gameId, String name, double distance, LocalDateTime time) {
+        this.gameId = gameId;
+        this.name = name;
+        this.distance = distance;
+        this.time = time;
+    }
 
     public String getName() {
         return name;
