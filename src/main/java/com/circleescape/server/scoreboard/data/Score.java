@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Score {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     //@GeneratedValue(strategy = GenerationType.TABLE)
     //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
