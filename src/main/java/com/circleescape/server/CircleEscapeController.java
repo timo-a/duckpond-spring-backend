@@ -140,7 +140,7 @@ public class CircleEscapeController {
 
 		LocalDateTime timestamp = LocalDateTime.now();
 
-		Score scoreBE = new Score(gameId, name, 42, timestamp);
+		Score scoreBE = new Score(name);
 
 		scoreRepository.save(scoreBE);
 
