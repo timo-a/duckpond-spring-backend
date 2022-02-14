@@ -3,7 +3,6 @@ package com.stackoverflow.question.controllers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import java.util.stream.StreamSupport;
 import com.stackoverflow.question.MyApplication;
 import com.stackoverflow.question.repositories.NameRepository;
 import org.junit.jupiter.api.Test;
@@ -24,11 +23,11 @@ public class MyControllerTest {
 
   @Test
   void trigger_validBody_savesName() throws Exception {
-    assertEquals(2, StreamSupport.stream(nameRepository.findAll().spliterator(), false).count());
+    assertEquals(2, nameRepository.count());
 
     mockMvc.perform(post("/triggerError")).andDo(MockMvcResultHandlers.print())
         .andExpect(status().isOk());
 
-    assertEquals(3, StreamSupport.stream(nameRepository.findAll().spliterator(), false).count());
+    assertEquals(3, nameRepository.count());
   }
 }
