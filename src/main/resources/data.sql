@@ -1,3 +1,2 @@
-insert into names (id, name) values
-  (1, 'Alex'),
-  (2, 'Bob');
+insert into names (name)
+values ('Alex'),('Bob');
