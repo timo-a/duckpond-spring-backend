@@ -10,18 +10,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Set;
 
 @Controller
-public class GreetingController {
+public class ScoreboardController {
 
     @Autowired
     ScoreRepository scoreRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(
-            @RequestParam(name = "name", required = false, defaultValue = "World") String name,
-            Model model) {
-        model.addAttribute("name", name);
+    @GetMapping("/highscore")
+    public String greeting(Model model) {
 
-        return "greeting";
+        model.addAttribute("scoreTests", scoreRepository.findAll());
+
+        return "highscore";
     }
 
 }

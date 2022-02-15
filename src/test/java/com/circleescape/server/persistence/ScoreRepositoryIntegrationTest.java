@@ -33,7 +33,7 @@ public class ScoreRepositoryIntegrationTest {
                 .baseUri("http://localhost")
                 .port(serverPort)
                 .basePath("game")
-                .body(Map.of("name", "Jack"))
+                .body("Jack")
 
                 .when()
                 .post("/4/postName")
@@ -43,5 +43,6 @@ public class ScoreRepositoryIntegrationTest {
 
         //assert new name is added
         assertEquals(3, nameRepository.count());
+        assertEquals("Jack", nameRepository.findById(3L).get().getName());
     }
 }
