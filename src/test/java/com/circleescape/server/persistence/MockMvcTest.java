@@ -29,7 +29,7 @@ public class MockMvcTest {
         assertEquals(2, scoreRepository.count());
 
         mockMvc.perform(
-                post("/game/4/postName")
+                post("/scoreboard/4/postName")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("\"name\":\"Jacko\""))
                 .andDo(MockMvcResultHandlers.print())

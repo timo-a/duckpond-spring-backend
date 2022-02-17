@@ -32,7 +32,7 @@ public class ScoreRepositoryIntegrationTest {
                 .given()
                 .baseUri("http://localhost")
                 .port(serverPort)
-                .basePath("game")
+                .basePath("scoreboard")
                 .body("Jack")
 
                 .when()

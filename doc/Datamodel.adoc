@@ -1,0 +1,39 @@
+# Documentation stuff
+
+## Datamodel
+
+[plantuml, puml, svg]
+.....
+@startuml
+entity Score {
+    * id
+--
+    * gameid
+    * name
+    * distance
+    * time
+}
+
+entity Game {
+    * id
+--
+    * turns
+    * authkey
+}
+
+note left of Game::authkey
+(hashed)
+endnote
+
+entity Collocation {
+    * gameID
+--
+    * duckR
+    * duckA
+    * catA
+}
+
+Score |o--|| Game
+Game ||--|{ Collocation
+@enduml
+.....

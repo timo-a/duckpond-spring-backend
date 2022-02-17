@@ -2,6 +2,7 @@ package com.circleescape.server.model;
 
 import javax.validation.constraints.NotNull;
 
+import com.circleescape.server.api.game.model.TurnResult;
 import lombok.Value;
 
 @Value

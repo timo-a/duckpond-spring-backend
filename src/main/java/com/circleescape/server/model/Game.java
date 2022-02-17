@@ -1,5 +1,6 @@
 package com.circleescape.server.model;
 
+import com.circleescape.server.api.game.model.TurnResult;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 

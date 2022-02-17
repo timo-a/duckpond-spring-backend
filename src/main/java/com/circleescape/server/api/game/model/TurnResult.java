@@ -1,4 +1,4 @@
-package com.circleescape.server.model;
+package com.circleescape.server.api.game.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
