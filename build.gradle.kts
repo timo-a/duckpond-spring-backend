@@ -1,15 +1,18 @@
 plugins {
-	id "org.springframework.boot" version("2.6.3")
-	id "io.spring.dependency-management" version("1.0.11.RELEASE")
-	id "java"
-	id "io.freefair.lombok" version("6.4.0")
-	id "com.github.johnrengelman.processes" version("0.5.0")  //needed for springdoc
-	id "org.springdoc.openapi-gradle-plugin" version("1.3.0") //
+	java
+	id("org.springframework.boot") version("2.6.3")
+	id("io.spring.dependency-management") version("1.0.11.RELEASE")
+	id("io.freefair.lombok") version("6.4.0")
+	id("com.github.johnrengelman.processes") version("0.5.0")  //needed for springdoc
+	id("org.springdoc.openapi-gradle-plugin") version("1.3.0") //
 }
 
 group = "com.circleescape"
 version = "0.0.1-SNAPSHOT"
-sourceCompatibility = "11"
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_11
+}
 
 repositories {
 	mavenCentral()
@@ -19,12 +22,12 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation ("org.springframework.boot:spring-boot-starter-data-jpa") {
-		exclude group: "org.hibernate", module: "hibernate-core"
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa") {
+		exclude(group= "org.hibernate", module= "hibernate-core")
 	}
 	implementation("org.hibernate:hibernate-core:5.6.5.Final")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
-		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+		exclude(group= "org.junit.vintage", module= "junit-vintage-engine")
 	}
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.6")
 	implementation("org.apache.commons:commons-math3:3.6.1")
@@ -39,8 +42,10 @@ dependencies {
 
 }
 
-test {
-	useJUnitPlatform()
+tasks {
+    test {
+	    useJUnitPlatform()
+    }
 }
 
 openApi {
