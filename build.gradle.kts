@@ -1,5 +1,8 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	java
+	kotlin("jvm") version "1.6.20-M1"
 	id("org.springframework.boot") version("2.6.3")
 	id("io.spring.dependency-management") version("1.0.11.RELEASE")
 	id("io.freefair.lombok") version("6.4.0")
@@ -29,7 +32,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group= "org.junit.vintage", module= "junit-vintage-engine")
 	}
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.6")
+	implementation( "org.springdoc:springdoc-openapi-ui:1.6.6")
 	implementation("org.apache.commons:commons-math3:3.6.1")
 	implementation("javax.validation:validation-api")
 	annotationProcessor("io.swagger:swagger-annotations:1.6.5")
@@ -39,6 +42,7 @@ dependencies {
 	testImplementation("io.rest-assured:rest-assured:4.5.1")
 	testImplementation("io.rest-assured:json-path:4.5.1")
 	testImplementation("io.rest-assured:xml-path:4.5.1")
+	implementation(kotlin("stdlib-jdk8"))
 
 }
 
@@ -54,4 +58,12 @@ openApi {
     outputFileName.set("myopenapi.yaml")
     waitTimeInSeconds.set(10)
     forkProperties.set("-Dspring.profiles.active=special")
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+	jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+	jvmTarget = "1.8"
 }
