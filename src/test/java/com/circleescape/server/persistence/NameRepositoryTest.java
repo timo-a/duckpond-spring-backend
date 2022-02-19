@@ -31,7 +31,7 @@ public class NameRepositoryTest {
   void save_validName_saved() {
     scoreRepository.findAll().forEach(s -> {System.out.println(s);});
     assertEquals(2, scoreRepository.count());
-    Score score = new Score(4L, "hugo", 6.7f, LocalDateTime.MAX);
+    Score score = new Score(4L, "hugo", 6.7f, LocalDateTime.MAX, null);
 
     Long generatedId = assertDoesNotThrow(() -> scoreRepository.save(score).getId());
 

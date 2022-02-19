@@ -1,13 +1,15 @@
+import org.jetbrains.kotlin.cli.jvm.compiler.findMainClass
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
-	java
 	kotlin("jvm") version "1.6.20-M1"
-	id("org.springframework.boot") version("2.6.3")
-	id("io.spring.dependency-management") version("1.0.11.RELEASE")
-	id("io.freefair.lombok") version("6.4.0")
-	id("com.github.johnrengelman.processes") version("0.5.0")  //needed for springdoc
-	id("org.springdoc.openapi-gradle-plugin") version("1.3.0") //
+	id("org.springframework.boot") version "2.6.3"
+	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("com.github.johnrengelman.processes") version "0.5.0"  //needed for springdoc
+	id("org.springdoc.openapi-gradle-plugin") version "1.3.0" //
+	kotlin("plugin.jpa") version "1.6.20-M1"
+    kotlin("plugin.spring") version "1.6.20-M1"
 }
 
 group = "com.circleescape"
@@ -33,6 +35,8 @@ dependencies {
 		exclude(group= "org.junit.vintage", module= "junit-vintage-engine")
 	}
 	implementation( "org.springdoc:springdoc-openapi-ui:1.6.6")
+    implementation("org.springdoc:springdoc-openapi-data-rest:1.6.6")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.6")
 	implementation("org.apache.commons:commons-math3:3.6.1")
 	implementation("javax.validation:validation-api")
 	annotationProcessor("io.swagger:swagger-annotations:1.6.5")
@@ -43,13 +47,23 @@ dependencies {
 	testImplementation("io.rest-assured:json-path:4.5.1")
 	testImplementation("io.rest-assured:xml-path:4.5.1")
 	implementation(kotlin("stdlib-jdk8"))
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
 }
 
-tasks {
-    test {
-	    useJUnitPlatform()
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "11"
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
+tasks.withType<BootJar> {
+    launchScript()
 }
 
 openApi {
