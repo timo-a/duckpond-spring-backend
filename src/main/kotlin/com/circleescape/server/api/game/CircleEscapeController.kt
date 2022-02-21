@@ -1,5 +1,6 @@
 package com.circleescape.server.api.game
 
+import com.circleescape.server.api.game.model.Duck
 import com.circleescape.server.api.game.model.GameState
 import com.circleescape.server.api.game.model.GameStatus
 import com.circleescape.server.api.game.model.TurnResult
@@ -37,16 +38,24 @@ class CircleEscapeController @Autowired constructor(private val gameService: Gam
             content = arrayOf(Content(mediaType = "application/json", schema = Schema(implementation = GameState::class)))
         )]
     )
-    @PostMapping("/newGame")
-    fun startNewGameVanilla(): ResponseEntity<GameState> {
-        val gp = GameParameters(100.0, 3.0)
-        gameService.createNewGame()
-        return ResponseEntity.ok().build()
 
-        //game.initialize(gp);
-        //GameState gs = game.getGameState();
-        //return new ResponseEntity<>(gs, HttpStatus.OK);
+    @PostMapping("/newGame")
+    fun startNewGameVanilla(): GameState {
+        val gp = GameParameters(100.0, 3.0)
+        return gameService.createNewGame().toGameState()
     }
+
+    fun Game.toGameState() = GameState(
+        speedFactor = speedFactor,
+        pondRadius = radius,
+        duck = escapee.toDuck(),
+        catAngle = guard,
+        state = state
+    )
+    fun PolarCoordinates.toDuck() = Duck(
+        radius = r,
+        angle = theta
+    )
 
     //allow user to set the speed
     //@PostMapping("/newCustomGame")

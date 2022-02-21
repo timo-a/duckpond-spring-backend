@@ -11,12 +11,12 @@ import kotlin.Pair
 
 @Service
 class GameService @Autowired constructor(private val gameEntityRepository: GameEntityRepository) {
-    fun createNewGame(): Game {
-        val c = Collocation(8.0, 8.0, 8.0)
-        val gp = GameParameters(4.0, 3.0)
-        val game = GameEntity("secret", gp, listOf(c,c), GameStatus.ONGOING.toString())
-        gameEntityRepository.save(game)
-        return Game(com.circleescape.server.model.GameParameters(0.0,0.0))
+
+    fun createNewGame(pondradius:Double=1.0, speedfactor:Double=4.0): Game {
+        val c = Collocation(0.0, 0.0, 0.0)
+        val gp = GameParameters(speedfactor, pondradius)
+        val game = GameEntity("secret", gp, listOf(c), GameStatus.ONGOING.toString())
+        return gameEntityRepository.save(game).toGame()
     }
 
     fun gameExists(id: Int) = gameEntityRepository.existsById(id.toLong())

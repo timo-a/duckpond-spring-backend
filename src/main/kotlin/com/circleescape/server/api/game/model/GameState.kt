@@ -18,7 +18,8 @@ class GameState(
         example = "40",
         minimum = "1"
     )
-    val radius: Double,
+    val pondRadius: Double,
+
     val duck: Duck,
     val catAngle: Double,
     @field:Schema(description = "current state of the game")

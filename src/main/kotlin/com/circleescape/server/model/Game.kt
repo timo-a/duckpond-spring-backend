@@ -2,7 +2,6 @@ package com.circleescape.server.model
 
 import com.circleescape.server.api.game.model.GameStatus
 import org.slf4j.LoggerFactory
-import kotlin.math.abs
 
 class Game constructor(val speedFactor: Double = 4.0,
            val radius: Double = 1.0,
@@ -34,10 +33,5 @@ class Game constructor(val speedFactor: Double = 4.0,
 
     val positions: Positions
         get() = Positions(escapee, guard)
-
-    fun moveEscapee(d: Diff?): Result? {
-        return null
-    }
-
 
 }
