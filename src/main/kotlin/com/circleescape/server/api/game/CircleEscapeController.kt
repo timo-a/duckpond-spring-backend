@@ -43,7 +43,7 @@ class CircleEscapeController @Autowired constructor(private val gameService: Gam
     fun startNewGameVanilla(): GameState {
         val gp = GameParameters(100.0, 3.0)
         return gameService.createNewGame().toGameState()
-    }
+    }//todo return game id as well
 
     fun Game.toGameState() = GameState(
         speedFactor = speedFactor,
