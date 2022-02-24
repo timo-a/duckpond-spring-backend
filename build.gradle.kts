@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.cli.jvm.compiler.findMainClass
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
@@ -48,6 +47,7 @@ dependencies {
 	testImplementation("io.rest-assured:xml-path:4.5.1")
 	implementation(kotlin("stdlib-jdk8"))
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    testImplementation("org.amshove.kluent:kluent:1.68")
 
 }
 
