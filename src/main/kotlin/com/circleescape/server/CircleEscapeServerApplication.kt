@@ -1,8 +1,5 @@
 package com.circleescape.server
 
-import com.circleescape.server.model.Game
-import com.circleescape.server.model.GameParameters
-import com.circleescape.server.model.SessionDB
 import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.headers.Header
@@ -11,14 +8,12 @@ import io.swagger.v3.oas.models.info.License
 import io.swagger.v3.oas.models.media.StringSchema
 import io.swagger.v3.oas.models.parameters.Parameter
 import io.swagger.v3.oas.models.security.SecurityScheme
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.context.event.EventListener
-import org.springframework.web.context.annotation.SessionScope
 
 @SpringBootApplication
 class CircleEscapeServerApplication {

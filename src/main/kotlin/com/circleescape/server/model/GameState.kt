@@ -7,5 +7,4 @@ class GameState(val speedFactor: Double,
                 val duck: PolarCoordinates,
                 val cat: Cat,
                 val state: GameStatus
-) {
-}
+)

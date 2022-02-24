@@ -5,19 +5,17 @@ import javax.validation.constraints.Min
 import kotlin.math.*
 
 /***
- * immutable
+ * Immutable
+ * Negative r throws illegal arguments exception
+ * Theta will be normalized s.t. 0 <= theta < TAU
  * @param r
+ * @param theta
  */
 class PolarCoordinates(r: Double, theta: Double) {
+
     val r: @Min(0) Double
     val theta: Double
 
-    /**
-     * Negative r throws illegal arguments exception
-     * Theta will be normalized s.t. 0 <= theta < TAU
-     * @param r
-     * @param theta
-     */
     init {
         require(r >= 0) { "Radius can't be negative." }
         this.r = r
@@ -49,8 +47,8 @@ class PolarCoordinates(r: Double, theta: Double) {
     }
 
     private fun fromCartesian(v: Vector2D): PolarCoordinates {
-        val r_ = sqrt(v.x * v.x + v.y * v.y)
-        val theta_ = atan2(v.y, v.x)
-        return PolarCoordinates(r_, theta_)
+        val r = sqrt(v.x * v.x + v.y * v.y)
+        val theta = atan2(v.y, v.x)
+        return PolarCoordinates(r, theta)
     }
 }

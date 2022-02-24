@@ -5,7 +5,6 @@ import com.circleescape.server.api.game.model.GameState
 import com.circleescape.server.api.game.model.GameStatus
 import com.circleescape.server.api.game.model.TurnResult
 import com.circleescape.server.model.*
-import com.circleescape.server.model.game.persistence.Collocation
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
@@ -14,13 +13,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import javax.validation.Valid
 import kotlin.math.sign
-import kotlin.Pair
 
 @CrossOrigin
 @RestController
@@ -98,8 +95,8 @@ class CircleEscapeController @Autowired constructor(private val gameService: Gam
 
         if (!dryrun) gameService.persist(game, result.first, result.second)
 
-        val response = gameService.prepareResponse(result.first, result.second);
-        return response.toTurnResult();
+        val response = gameService.prepareResponse(result.first, result.second)
+        return response.toTurnResult()
     }
 
     fun TurnResponse.toTurnResult() = TurnResult(

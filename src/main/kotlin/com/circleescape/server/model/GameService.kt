@@ -41,9 +41,8 @@ class GameService @Autowired constructor(private val gameEntityRepository: GameE
 
         val stepCalculator = StepCalculator(GreedyGuard(), game.parameters)
         val pos = Positions(game.escapee, game.guard)
-        val erg: Pair<Positions, GameStatus> = stepCalculator.step(pos, duck)
 
-        return erg//Pair(Collocation(0.0,0.0,0.0), GameStatus.ONGOING)
+        return stepCalculator.step(pos, duck)//Pair(Collocation(0.0,0.0,0.0), GameStatus.ONGOING)
     }
 
     fun persist(game: Game, c: Positions, second: GameStatus) :Positions{
