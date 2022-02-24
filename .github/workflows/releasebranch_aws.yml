@@ -19,7 +19,7 @@ jobs:
         env:
           FILE: src/main/resources/application.properties
         run: |
-          VERSION=$(echo grep -Po -m 1 "(?<=info.app.version=).*")
+          VERSION=$(grep -Po -m 1 "(?<=info.app.version=).*" $FILE)
           echo "::set-output name=version::$VERSION"
 
       # sets NEW_VERSION_NAME
@@ -45,7 +45,7 @@ jobs:
             ./gradlew bootJar
             cp build/libs/circle-escape-server-0.0.1-SNAPSHOT.jar .
             zip circle-escape-server.zip -r .ebextensions circle-escape-server-0.0.1-SNAPSHOT.jar
-
+            rm circle-escape-server-0.0.1-SNAPSHOT.jar
 
       - name: init git config
         run: |
@@ -56,7 +56,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          #git add -A
+          git add -A
           NEW_VERSION_CODE=${{ steps.increase_version_code.outputs.new_version_code }}
           NEW_VERSION_NAME=${{ steps.increase_version_name.outputs.new_version_name }}
           git commit -m "compile zip for ${{steps.get_version_code.outputs.version}}" -a
