@@ -54,7 +54,6 @@ jobs:
       - uses: nelonoel/branch-name@v1
       - name: print branch name
         run: |
-          echo release/v${{ steps.get_version_code.outputs.version }}
           echo ${BRANCH_NAME}
 
       - name: push changes
