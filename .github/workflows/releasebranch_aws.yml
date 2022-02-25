@@ -55,7 +55,6 @@ jobs:
       - name: print branch name
         run: |
           echo release/v${{ steps.get_version_code.outputs.version }}
-          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           echo ${BRANCH_NAME}
 
       - name: push changes
