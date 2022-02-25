@@ -51,18 +51,17 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-
-      - name: commit files
+      - uses: nelonoel/branch-name@v1
+      - name: print branch name
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          NEW_VERSION_CODE=${{ steps.increase_version_code.outputs.new_version_code }}
-          NEW_VERSION_NAME=${{ steps.increase_version_name.outputs.new_version_name }}
-          git commit -m "compile zip for ${{steps.get_version_code.outputs.version}}" -a
+          echo release/v${{ steps.get_version_code.outputs.version }}
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo ${BRANCH_NAME}
 
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: release/v${{ steps.get_version_code.outputs.version }}
+        
+          
